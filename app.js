@@ -5,10 +5,13 @@ const port = 3000
 var SunCalc = require('suncalc');
 
 app.get('/', (req, res) => {
-  now = new Date();
-  var sunPosition = SunCalc.getPosition(now, 37.4226711, -122.0849872)
+  let time_ms = req.query.time_ms ?? 0;
+  now = new Date(time_ms);
+  let lat = req.query.lat ?? 0;
+  let long = req.query.long ?? 0;
+  var sunPosition = SunCalc.getPosition(now, lat, long)
   console.log(sunPosition);
-  var moonPosition = SunCalc.getMoonPosition(now, 37.4226711, -122.0849872)
+  var moonPosition = SunCalc.getMoonPosition(now, lat, long)
   console.log(moonPosition);
   let merged = {"sun": sunPosition, "moon": moonPosition};
   res.send(merged);
