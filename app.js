@@ -3,7 +3,12 @@
 const express = require('express')
 const app = express()
 const port = 3000
+
+// 'extended' is default and based on qs, 'simple' is based on node native querystring
+// I think I only need simple..
 app.set('query parser', 'simple');
+// pretty print json
+app.set('json spaces', 4)
 
 var SunCalc = require('suncalc');
 
