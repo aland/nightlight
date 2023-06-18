@@ -48,6 +48,10 @@ app.get('/', (req, res) => {
       "moon is illuminated": moonIllumination.fraction});
     nightlight = moonIllumination.fraction;
   }
+  else {
+    console.log('Both sun and moon are below horizon, it is probably dark');
+    nightlight = 0.0;
+  }
   let merged = {"nightlight": nightlight, "sun": sunPosition, "moon": moonPosition};
   console.log({"Response" : merged});
   res.send(merged);

@@ -1,0 +1,5 @@
+{
+    "command": "node app.js",
+    "release": {},
+    "notes": "Nightlight application"
+  }
